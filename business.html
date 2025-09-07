@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Бізнес-логіка — Онлайн-магазин книжок</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url("covers/bg.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(90deg, #4b1f1f, #4b1f1f);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 {margin: 0;}
+    nav {margin-top: 10px;}
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {text-decoration: underline;}
+
+    main {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #793636;
+      margin-top: 25px;
+    }
+
+    ul, ol {
+      margin: 10px 0 15px 20px;
+    }
+
+    footer {
+      margin: 30px auto;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Бізнес-логіка — Онлайн-магазин книжок</h1>
+    <nav>
+      <a href="index.html">Головна</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Предметна галузь</h2>
+    <p>Онлайн-магазин книжок дозволяє користувачам переглядати каталог, вибирати книги за жанрами та авторами, формувати замовлення й отримувати підтвердження.</p>
+
+    <h2>Функціонал</h2>
+    <ul>
+      <li>Перегляд каталогу книжок (назва, автор, ціна).</li>
+      <li>Фільтрація книжок за жанрами.</li>
+      <li>Форма замовлення книги онлайн.</li>
+    </ul>
+
+    <h2>Бізнес-логіка (сценарій)</h2>
+    <ol>
+      <li>Користувач відкриває сайт і переглядає каталог книжок.</li>
+      <li>Користувач обирає книгу і заповнює форму замовлення.</li>
+      <li>Система приймає дані, формує заявку і надсилає підтвердження (поки демо — alert).</li>
+      <li>Адміністратор отримує інформацію і виконує доставку.</li>
+    </ol>
+
+    <h2>Функціональні вимоги</h2>
+    <ul>
+      <li>Перегляд каталогу книжок з інформацією (назва, автор, жанр, ціна, обкладинка).</li>
+      <li>Відображення книжок за жанрами у таблиці.</li>
+      <li>Форма замовлення з перевіркою обов’язкових полів.</li>
+      <li>Повідомлення про успішне замовлення (alert).</li>
+      <li>Навігація між головною сторінкою та описом бізнес-логіки.</li>
+    </ul>
+
+    <h2>Нефункціональні вимоги</h2>
+    <ul>
+      <li>Сайт має бути адаптивним (працювати на мобільних і ПК).</li>
+      <li>Простий і зрозумілий інтерфейс.</li>
+      <li>Швидке завантаження сторінок.</li>
+    </ul>
+  </main>
+
+  <footer>
+    <p>IS-44_appWEB-LisovaAlina-FIOT-2025 — Бізнес-логіка сайту</p>
+  </footer>
+</body>
+</html>

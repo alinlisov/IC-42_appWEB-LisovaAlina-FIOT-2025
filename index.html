@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Онлайн-магазин книжок</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0; 
+      padding: 0; 
+      background: url("covers/bg.jpg") no-repeat center center fixed;
+      background-size: cover; 
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(90deg, #4b1f1f, #4b1f1f);
+      color: #fff; 
+      padding: 20px; 
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 {margin: 0;}
+    nav {margin-top: 10px;}
+    nav a {
+      color: #fff; 
+      margin: 0 10px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      transition: 0.3s;
+    }
+    nav a:hover {text-decoration: underline;}
+
+    main {
+      max-width: 1100px; 
+      margin: 20px auto; 
+      padding: 20px; 
+      background: #fff; 
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    h2 {color: #793636; margin-top: 30px;}
+
+    /* Сітка книжок */
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .book-card {
+      background: #fafafa;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .book-card:hover {transform: translateY(-5px);}
+    .book-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .book-info {
+      padding: 15px;
+    }
+
+    .book-info h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .book-info p {
+      margin: 4px 0;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .book-price {
+      margin-top: 8px;
+      font-weight: bold;
+      color: #e63946;
+    }
+
+    ul, ol {margin: 10px 0 10px 20px;}
+
+    form {
+      margin-top: 12px; 
+      display: grid; 
+      gap: 12px;
+    }
+
+    label {font-weight: bold;}
+    input, select, button {
+      padding: 8px; 
+      border: 1px solid #ccc; 
+      border-radius: 6px; 
+      font-size: 14px;
+    }
+
+    button {
+      background: #793636; 
+      color: #fff; 
+      font-weight: bold; 
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {background: #5e2525;}
+
+    /* Таблиця жанрів */
+    .genres {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: #fafafa;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .genres th, .genres td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    .genres th {
+      background: #793636;
+      color: #fff;
+    }
+
+    .genres tr:nth-child(even) {
+      background: #f9f2f2;
+    }
+
+    .genres tr:hover {
+      background: #f0dcdc;
+      transition: 0.3s;
+    }
+
+    footer {
+      margin: 30px auto; 
+      text-align: center; 
+      font-size: 0.9rem; 
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Онлайн-магазин книжок</h1>
+    <nav>
+      <a href="index.html">Головна</a>
+      <a href="business.html">Бізнес-логіка</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Каталог книжок</h2>
+    <div class="book-grid">
+      <div class="book-card">
+        <img src="covers/nile.jpg" alt="Смерть на Нілі">
+        <div class="book-info">
+          <h3>Смерть на Нілі</h3>
+          <p>Агата Крісті</p>
+          <p>Детектив</p>
+          <p class="book-price">300 грн</p>
+        </div>
+        </div>
+      <div class="book-card">
+        <img src="covers/ejr.jpg" alt="Джейн Ейр">
+        <div class="book-info">
+          <h3>Джейн Ейр</h3>
+          <p>Шарлотта Бронте</p>
+          <p>Роман</p>
+          <p class="book-price">500 грн</p>
+        </div>
+      </div>
+      <div class="book-card">
+        <img src="covers/dorian.jpg" alt="Портрет Доріана Грея">
+        <div class="book-info">
+          <h3>Портрет Доріана Грея</h3>
+          <p>Оскар Уайльд</p>
+          <p>Роман</p>
+          <p class="book-price">220 грн</p>
+        </div>
+      </div>
+      <div class="book-card">
+        <img src="covers/davinci.jpg" alt="Код да Вінчі">
+        <div class="book-info">
+          <h3>Код да Вінчі</h3>
+          <p>Ден Браун</p>
+          <p>Детектив</p>
+          <p class="book-price">460 грн</p>
+        </div>
+         </div>
+      <div class="book-card">
+        <img src="covers/internat.jpg" alt="Інтернат">
+        <div class="book-info">
+          <h3>Інтернат</h3>
+          <p>Сергій Жадан</p>
+          <p>Роман</p>
+          <p class="book-price">345 грн</p>
+        </div>
+        </div>
+      <div class="book-card">
+        <img src="covers/potter.jpg" alt="Гаррі Поттер і філософський камінь">
+        <div class="book-info">
+          <h3>Гаррі Поттер і філософський камінь</h3>
+          <p>Джоан Роулінг</p>
+          <p>Фантастика</p>
+          <p class="book-price">450 грн</p>
+        </div>
+          </div>
+      <div class="book-card">
+        <img src="covers/gordist.jpg" alt="Гордість і упередження">
+        <div class="book-info">
+          <h3>Гордість і упередження</h3>
+          <p>Джейн Остін</p>
+          <p>Роман</p>
+          <p class="book-price">770 грн</p>
+        </div>
+        </div>
+      <div class="book-card">
+        <img src="covers/mandru.jpg" alt="Мандри Гуллівера">
+        <div class="book-info">
+          <h3>Мандри Гуллівера</h3>
+          <p>Джонатан Свіфт</p>
+          <p>Фантастика</p>
+          <p class="book-price">360 грн</p>
+        </div>
+        </div>
+      <div class="book-card">
+        <img src="covers/agata.jpg" alt="Вбивство у «Східному експресі">
+        <div class="book-info">
+          <h3>Вбивство у «Східному експресі</h3>
+          <p>Агата Крісті</p>
+          <p>Детектив</p>
+          <p class="book-price">400 грн</p>
+        </div>
+      </div>
+      <div class="book-card">
+        <img src="covers/flowers.jpg" alt="Квіти для Елджернона">
+        <div class="book-info">
+          <h3>Квіти для Елджернона</h3>
+          <p>Деніел Кіз</p>
+          <p>Фантастика</p>
+          <p class="book-price">140 грн</p>
+        </div>
+      </div>
+      <div class="book-card">
+        <img src="covers/three_comrades.jpg" alt="Три товариші">
+        <div class="book-info">
+          <h3>Три товариші</h3>
+          <p>Еріх Марія Ремарк</p>
+          <p>Роман</p>
+          <p class="book-price">390 грн</p>
+        </div>
+        </div>
+      <div class="book-card">
+        <img src="covers/platon.jpg" alt="Держава">
+        <div class="book-info">
+          <h3>Держава</h3>
+          <p>Платон</p>
+          <p>Філософія</p>
+          <p class="book-price">400 грн</p>
+        </div>
+        </div>
+      <div class="book-card">
+        <img src="covers/velukuy.jpg" alt="Великий Гетсбі">
+        <div class="book-info">
+          <h3>Великий Гетсбі</h3>
+          <p>Френсіс Скотт Фіцджеральд</p>
+          <p>Класика</p>
+          <p class="book-price">245 грн</p>
+        </div>
+      </div>
+      <div class="book-card">
+        <img src="covers/sherlock1.jpg" alt="Пригоди Шерлока Холмса. Том 1">
+        <div class="book-info">
+          <h3>Пригоди Шерлока Холмса. Том 1</h3>
+          <p>Артур Конан-Дойл</p>
+          <p>Детектив</p>
+          <p class="book-price">400 грн</p>
+        </div>
+      </div>
+      <div class="book-card">
+        <img src="covers/sun.jpg" alt="Мистецтво війни">
+        <div class="book-info">
+          <h3>Мистецтво війни</h3>
+          <p>Сунь-цзи</p>
+          <p>Філософія</p>
+          <p class="book-price">250 грн</p>
+        </div>
+      </div>
+      <div class="book-card">
+        <img src="covers/taras.jpg" alt="Тарас Бульба">
+        <div class="book-info">
+          <h3>Тарас Бульба</h3>
+          <p>Микола Гоголь</p>
+          <p>Класика</p>
+          <p class="book-price">200 грн</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Жанри книжок</h2>
+    <table class="genres">
+      <thead>
+        <tr>
+          <th>Жанр</th>
+          <th>Опис</th>
+          <th>Книги</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Класика</td>
+          <td>Твори, що мають високу літературну цінність і витримали перевірку часом.</td> 
+          <td>«Тарас Бульба» - Микола Гоголь<br>"Великий Гетсбі" - Френсіс Скотт Фіцджеральд </td>
+        </tr>
+        <tr>
+          <td>Фантастика</td>
+          <td>Книги з елементами вигаданих світів, майбутнього або наукових відкриттів.</td>
+          <td>«Квіти для Елджернона» - Деніел Кіз<br>"Гаррі Поттер" - Джоан Роулінг<br>
+          "Мандри Гуллівера" - Джонатан Свіфт </td>
+        </tr>
+        <tr>
+          <td>Детектив</td>
+          <td>Сюжет будується навколо розслідувань та загадкових подій.</td>
+          <td>«Смерть на Нілі» - Агата Крісті<br>"Код да Вінчі" - Ден Браун<br>"Вбивство у «Східному експресі" - Агата Крісті<br>
+          "Пригоди Шерлока Холмса" - Артур Конан-Дойл</td>
+        </tr>
+        <tr>
+          <td>Філософія</td>
+          <td>Книги з глибокими роздумами про життя, суспільство та світ.</td>
+          <td>«Мистецтво війни» - Сунь-цзи<br>"Держава" - Платон</td>
+        </tr>
+        <tr>
+          <td>Роман</td>
+          <td>Художні твори, що розповідають про людські долі та почуття.</td>
+          <td>«Три товариші» - Еріх Марія Ремарк<br>"Джейн Ейр" - Шарлотта Бронте<br>"Портрет Доріана Грея" - Оскар Уайльд<br>
+          "Інтернат" - Сергій Жадан<br>"Гордість і упередження" - Джейн Остін</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Топ-3 авторів</h2>
+    <ul>
+      <li>Агата Крісті</li>
+      <li>Ден Браун</li>
+      <li>Артур Конан-Дойл</li>
+    </ul>
+        <h2>Фаворити читачів</h2>
+    <ol>
+      <li>Гаррі Поттер і філософський камінь — дуже популярна</li>
+      <li>Код да Вінчі — часто замовляють</li>
+      <li>Три товариші — популярна серед студентів</li>
+      <li>Смерть на Нілі — стабільні замовлення</li>
+      <li>Квіти для Елджернона — для цінителів</li>
+    </ol>
+
+
+    <h2>Форма замовлення</h2>
+    <form action="#" method="post" onsubmit="alert('Ваше замовлення прийняте!'); return false;">
+      <label for="name">Ваше ім'я:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="book">Оберіть книгу:</label>
+      <select id="book" name="book" required>
+        <option value="">-- Оберіть --</option>
+        <option value="nile">Смерть на Нілі</option>
+        <option value="dorian">Портрет Доріана Грея</option>
+        <option value="davinci">Код да Вінчі</option>
+        <option value="flowers">Квіти для Елджернона</option>
+        <option value="three_comrades">Три товариші</option>
+        <option value="sherlock1">Пригоди Шерлока Холмса. Том 1</option>
+        <option value="sun">Мистецтво війни</option>
+        <option value="taras">Тарас Бульба</option>
+      </select>
+
+      <label for="qty">Кількість:</label>
+      <input type="number" id="qty" name="qty" min="1" max="10" required>
+
+      <button type="submit">Замовити</button>
+    </form>
+
+    <h2>Документація</h2>
+    <p>Детальний опис предметної галузі та бізнес-логіки можна переглянути тут: 
+       <a href="business.html">Опис бізнес-логіки</a>.
+    </p>
+  </main>
+
+  <footer>
+    <p>IS-44_appWEB-LisovaAlina-FIOT-2025 — Онлайн-магазин книжок</p>
+  </footer>
+</body>
+</html>
