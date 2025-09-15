@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <title>Онлайн-магазин книжок</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
+ <link rel="icon" type="image/x-icon" href="covers/book.ico">
+
+ <style>
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0; 
@@ -53,6 +55,7 @@
     }
 
     .book-card {
+      position: relative;
       background: #fafafa;
       border-radius: 10px;
       overflow: hidden;
@@ -86,6 +89,26 @@
       margin-top: 8px;
       font-weight: bold;
       color: #e63946;
+    }
+
+    /* Кнопка замовлення */
+    .order-btn {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      padding: 8px 12px;
+      background: #793636;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .book-card:hover .order-btn {
+      opacity: 1;
     }
 
     ul, ol {margin: 10px 0 10px 20px;}
@@ -144,6 +167,74 @@
       transition: 0.3s;
     }
 
+    .comments h2 {
+  margin-bottom: 16px;
+  color: #793636;
+  text-align: left; 
+  font-size: 1.5rem;
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px; 
+}
+
+#comment-form input,
+#comment-form textarea {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#comment-form button {
+  align-self: flex-start; 
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  background: #793636;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#comment-form button:hover {
+  background: #5e2525;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.comment {
+  background: #f9f9f9;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border-left: 4px solid #793636;
+}
+
+.comment h3 {
+  margin: 0 0 4px;
+  color: #793636;
+  font-size: 1rem;
+}
+
+.comment small {
+  display: block;
+  margin-top: 6px;
+  color: #555;
+  font-size: 0.8rem;
+}
+
+
     footer {
       margin: 30px auto; 
       text-align: center; 
@@ -163,152 +254,168 @@
 
   <main>
     <h2>Каталог книжок</h2>
-    <div class="book-grid">
-      <div class="book-card">
+    <section class="book-grid">
+      <section class="book-card">
         <img src="covers/nile.jpg" alt="Смерть на Нілі">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Смерть на Нілі</h3>
           <p>Агата Крісті</p>
           <p>Детектив</p>
           <p class="book-price">300 грн</p>
-        </div>
-        </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Смерть на Нілі">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/ejr.jpg" alt="Джейн Ейр">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Джейн Ейр</h3>
           <p>Шарлотта Бронте</p>
           <p>Роман</p>
           <p class="book-price">500 грн</p>
-        </div>
-      </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Джейн Ейр">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/dorian.jpg" alt="Портрет Доріана Грея">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Портрет Доріана Грея</h3>
           <p>Оскар Уайльд</p>
           <p>Роман</p>
           <p class="book-price">220 грн</p>
-        </div>
-      </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Портрет Доріана Грея">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/davinci.jpg" alt="Код да Вінчі">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Код да Вінчі</h3>
           <p>Ден Браун</p>
           <p>Детектив</p>
           <p class="book-price">460 грн</p>
-        </div>
-         </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Код да Вінчі">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/internat.jpg" alt="Інтернат">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Інтернат</h3>
           <p>Сергій Жадан</p>
           <p>Роман</p>
           <p class="book-price">345 грн</p>
-        </div>
-        </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Інтернат">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/potter.jpg" alt="Гаррі Поттер і філософський камінь">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Гаррі Поттер і філософський камінь</h3>
           <p>Джоан Роулінг</p>
           <p>Фантастика</p>
           <p class="book-price">450 грн</p>
-        </div>
-          </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Гаррі Поттер і філософський камінь">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/gordist.jpg" alt="Гордість і упередження">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Гордість і упередження</h3>
           <p>Джейн Остін</p>
           <p>Роман</p>
           <p class="book-price">770 грн</p>
-        </div>
-        </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Гордість і упередження">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/mandru.jpg" alt="Мандри Гуллівера">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Мандри Гуллівера</h3>
           <p>Джонатан Свіфт</p>
           <p>Фантастика</p>
           <p class="book-price">360 грн</p>
-        </div>
-        </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Мандри Гуллівера">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/agata.jpg" alt="Вбивство у «Східному експресі">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Вбивство у «Східному експресі</h3>
           <p>Агата Крісті</p>
           <p>Детектив</p>
           <p class="book-price">400 грн</p>
-        </div>
-      </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Вбивство у «Східному експресі">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/flowers.jpg" alt="Квіти для Елджернона">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Квіти для Елджернона</h3>
           <p>Деніел Кіз</p>
           <p>Фантастика</p>
           <p class="book-price">140 грн</p>
-        </div>
-      </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Квіти для Елджернона">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/three_comrades.jpg" alt="Три товариші">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Три товариші</h3>
           <p>Еріх Марія Ремарк</p>
           <p>Роман</p>
           <p class="book-price">390 грн</p>
-        </div>
-        </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Три товариші">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/platon.jpg" alt="Держава">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Держава</h3>
           <p>Платон</p>
           <p>Філософія</p>
           <p class="book-price">400 грн</p>
-        </div>
-        </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Держава">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/velukuy.jpg" alt="Великий Гетсбі">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Великий Гетсбі</h3>
           <p>Френсіс Скотт Фіцджеральд</p>
           <p>Класика</p>
           <p class="book-price">245 грн</p>
-        </div>
-      </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Великий Гетсбі">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/sherlock1.jpg" alt="Пригоди Шерлока Холмса. Том 1">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Пригоди Шерлока Холмса. Том 1</h3>
           <p>Артур Конан-Дойл</p>
           <p>Детектив</p>
           <p class="book-price">400 грн</p>
-        </div>
-      </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Пригоди Шерлока Холмса. Том 1">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/sun.jpg" alt="Мистецтво війни">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Мистецтво війни</h3>
           <p>Сунь-цзи</p>
           <p>Філософія</p>
           <p class="book-price">250 грн</p>
-        </div>
-      </div>
-      <div class="book-card">
+        </section>
+        <button class="order-btn" data-book="Мистецтво війни">Замовити</button>
+      </section>
+      <section class="book-card">
         <img src="covers/taras.jpg" alt="Тарас Бульба">
-        <div class="book-info">
+        <section class="book-info">
           <h3>Тарас Бульба</h3>
           <p>Микола Гоголь</p>
           <p>Класика</p>
           <p class="book-price">200 грн</p>
-        </div>
-      </div>
-    </div>
+        </section>
+        <button class="order-btn" data-book="Тарас Бульба">Замовити</button>
+      </section>
+    </section>
 
     <h2>Жанри книжок</h2>
     <table class="genres">
@@ -368,40 +475,161 @@
 
 
     <h2>Форма замовлення</h2>
-    <form action="#" method="post" onsubmit="alert('Ваше замовлення прийняте!'); return false;">
-      <label for="name">Ваше ім'я:</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-
+    <form action="#" method="post" onsubmit="alert('Замовлення відправлено!'); return false;">
       <label for="book">Оберіть книгу:</label>
-      <select id="book" name="book" required>
-        <option value="">-- Оберіть --</option>
-        <option value="nile">Смерть на Нілі</option>
-        <option value="dorian">Портрет Доріана Грея</option>
-        <option value="davinci">Код да Вінчі</option>
-        <option value="flowers">Квіти для Елджернона</option>
-        <option value="three_comrades">Три товариші</option>
-        <option value="sherlock1">Пригоди Шерлока Холмса. Том 1</option>
-        <option value="sun">Мистецтво війни</option>
-        <option value="taras">Тарас Бульба</option>
+      <select id="book" name="book">
+        <option>Смерть на Нілі</option>
+        <option>Джейн Ейр</option>
+        <option>Портрет Доріана Грея</option>
+        <option>Код да Вінчі</option>
+        <option>Інтернат</option>
+        <option>Гаррі Поттер і філософський камінь</option>
+        <option>Гордість і упередження</option>
+        <option>Мандри Гуллівера</option>
+        <option>Вбивство у «Східному експресі</option>
+        <option>Квіти для Елджернона</option>
+        <option>Три товариші</option>
+        <option>Держава</option>
+        <option>Великий Гетсбі</option>
+        <option>Пригоди Шерлока Холмса. Том 1</option>
+        <option>Мистецтво війни</option>
+        <option>Тарас Бульба</option>
       </select>
 
-      <label for="qty">Кількість:</label>
-      <input type="number" id="qty" name="qty" min="1" max="10" required>
+    <label for="qty">Кількість:</label> <input type="number" id="qty" name="qty" min="1" max="10" required>
+<label for="name">Ваше повне ім'я:</label>
+<input type="text" id="name" name="name" required>
+
+   
+<label for="phone">Номер телефону:</label>
+<input type="tel" id="phone" name="phone" pattern="^\+380\d{9}$" 
+placeholder="+380XXXXXXXXX" required>
+
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" required>
+
+<label for="region">Адреса доставки:</label>
+<select id="region" name="region" required>
+  <option value="">-- Оберіть область --</option>
+  <option>Вінницька</option>
+  <option>Волинська</option>
+  <option>Дніпропетровська</option>
+  <option>Донецька</option>
+  <option>Житомирська</option>
+  <option>Закарпатська</option>
+  <option>Запорізька</option>
+  <option>Івано-Франківська</option>
+  <option>Київська</option>
+  <option>Кіровоградська</option>
+  <option>Луганська</option>
+  <option>Львівська</option>
+  <option>Миколаївська</option>
+  <option>Одеська</option>
+  <option>Полтавська</option>
+  <option>Рівненська</option>
+  <option>Сумська</option>
+  <option>Тернопільська</option>
+  <option>Харківська</option>
+  <option>Херсонська</option>
+  <option>Хмельницька</option>
+  <option>Черкаська</option>
+  <option>Чернівецька</option>
+  <option>Чернігівська</option>
+  <option>м. Київ</option>
+  </select>
+
+<label for="address">Місто/село/смт:</label>
+<input type="text" id="address" name="address" required>
+
 
       <button type="submit">Замовити</button>
     </form>
 
-    <h2>Документація</h2>
+
+<section class="comments">
+  <h2>Відгуки</h2>
+
+  <!-- Форма для додавання нового коментаря -->
+  <form id="comment-form">
+    <label for="comment-name">Ваше ім’я:</label>
+    <input type="text" id="comment-name" name="comment-name" placeholder="Введіть ім’я" required>
+
+    <label for="comment-text">Ваш відгук:</label>
+    <textarea id="comment-text" name="comment-text" rows="4" placeholder="Напишіть свій відгук..." required></textarea>
+
+    <button type="submit">Надіслати</button>
+  </form>
+
+  <!-- Список відгуків -->
+  <section id="comment-list" class="comment-list">
+    <article class="comment">
+      <h3>Лєна</h3>
+      <p>чотко 🙂</p>
+      <small>12.09.2025</small>
+    </article>
+    <article class="comment">
+      <h3>Кукарача</h3>
+      <p>швидка доставка</p>
+      <small>11.09.2025</small>
+    </article>
+  </section>
+</section>
+
+
+ <h2>Документація</h2>
     <p>Детальний опис предметної галузі та бізнес-логіки можна переглянути тут: 
-       <a href="business.html">Опис бізнес-логіки</a>.
+      <a href="business.html">Опис бізнес-логіки</a>.
     </p>
+
   </main>
 
-  <footer>
-    <p>IS-44_appWEB-LisovaAlina-FIOT-2025 — Онлайн-магазин книжок</p>
-  </footer>
+     <footer>
+    <p>IC-42_appWEB-LisovaAlina-FIOT-2025 — Онлайн-магазин книжок</p>
+      </footer>
+
+  <script>
+    document.querySelectorAll('.order-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const bookName = btn.getAttribute('data-book');
+        const bookSelect = document.getElementById('book');
+
+        for (let option of bookSelect.options) {
+          if (option.text.includes(bookName)) {
+            bookSelect.value = option.value;
+            break;
+          }
+        }
+        document.querySelector('form').scrollIntoView({behavior: 'smooth'});
+      });
+    });
+  </script>
+
+  <script>
+  const form = document.getElementById("comment-form");
+  const commentList = document.getElementById("comment-list");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("comment-name").value.trim();
+    const text = document.getElementById("comment-text").value.trim();
+    const date = new Date().toLocaleDateString("uk-UA");
+
+    if (name && text) {
+      const newComment = document.createElement("article");
+      newComment.classList.add("comment");
+
+      newComment.innerHTML = `
+        <h3>${name}</h3>
+        <p>${text}</p>
+        <small>${date}</small>
+      `;
+
+      commentList.prepend(newComment);
+      form.reset(); // очищає форму
+    }
+  });
+</script>
+
 </body>
 </html>
