@@ -273,7 +273,7 @@
 
 .form-container:hover,
 .reviews-container:hover {
-  transform: translateY(-4px); /* легке підняття при наведенні */
+  transform: translateY(-4px); 
 }
 
 /* Заголовки */
@@ -359,17 +359,17 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 0.95rem;
-  transition: border-color 0.3s, box-shadow 0.3s;  /* плавний перехід */
-  width: 100%;                    /* щоб на всю ширину */
+  transition: border-color 0.3s, box-shadow 0.3s;  
+  width: 100%;                    
   box-sizing: border-box;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: #793636;          /* колір при фокусі */
+  border-color: #793636;         
   outline: none;
-  box-shadow: 0 0 0 3px rgba(121,54,54,0.1); /* ефект підсвічування */
+  box-shadow: 0 0 0 3px rgba(121,54,54,0.1); 
 }
 
 button {
@@ -392,19 +392,19 @@ button:hover {
 
 
 button:active {
-  transform: translateY(0); /* повертається при кліку */
+  transform: translateY(0); 
 }
 
 .feedback-btn {
-  position: fixed;           /* фіксується на екрані */
-  bottom: 40px;              /* відступ від низу */
-  right: 40px;               /* відступ від правого краю */
+  position: fixed;           
+  bottom: 40px;              
+  right: 40px;              /
   background: linear-gradient(90deg, #793636, #5e2525);
   color: #fff;
   font-weight: bold;
   padding: 14px 22px;
   border: none;
-  border-radius: 50px;       /* круглі краї */
+  border-radius: 50px;       
   font-size: 1rem;
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -772,8 +772,8 @@ button:active {
 
 <section class="section-bg">
   <div class="form-container">
-    <h2>Форма замовлення</h2>
-    <form action="#" method="post" onsubmit="alert('Замовлення відправлено!'); return false;">
+        <form action="#" method="post" onsubmit="alert('Замовлення відправлено!'); return false;">
+          <h2>Форма замовлення</h2>
       <label for="book">Оберіть книгу:</label>
       <select id="book" name="book">
         <option>Смерть на Нілі</option>
@@ -847,22 +847,61 @@ placeholder="+380XXXXXXXXX" required>
 
 <hr class="section-divider">
 
-<section class="section-rv</section>
-<div class="review-toggle-section">
-  <button class="toggle-review-btn" onclick="toggleReviewForm()">Залишити відгук</button>
+<section>
+  <div class="review-toggle-section">
+    <button class="toggle-review-btn" onclick="toggleReviewForm()">Залишити відгук</button>
 
-  <div id="reviewFormWrapper" style="display: none;" class="reviews-container">
-    <h2>Залишити відгук</h2>
-    <form id="comment-form">
-      <label for="name">Ваше ім’я:</label>
-      <input type="text" id="name" placeholder="Введіть ім’я">
+    <div id="reviewFormWrapper" style="display: none;" class="reviews-container">
+      <h2>Залишити відгук</h2>
+      <form id="comment-form">
+        <label for="comment-name">Ваше ім’я:</label>
+        <input type="text" id="comment-name" placeholder="Введіть ім’я" required>
 
-      <label for="comment">Ваш відгук:</label>
-      <textarea id="comment" rows="4" placeholder="Напишіть свій відгук..."></textarea>
+        <label for="comment-text">Ваш відгук:</label>
+        <textarea id="comment-text" rows="4" placeholder="Напишіть свій відгук..." required></textarea>
 
-      <button type="submit">Надіслати</button>
-    </form>
+        <button type="submit">Надіслати</button>
+      </form>
+    </div>
+
+    <!-- Тут з'являтимуться коментарі -->
+    <div id="comment-list" class="comment-list"></div>
   </div>
+</section>
+
+<script>
+  // показати / сховати форму
+  function toggleReviewForm() {
+    const wrapper = document.getElementById("reviewFormWrapper");
+    wrapper.style.display = (wrapper.style.display === "none" || wrapper.style.display === "") 
+      ? "block" 
+      : "none";
+  }
+  
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("comment-name").value.trim();
+    const text = document.getElementById("comment-text").value.trim();
+    const date = new Date().toLocaleDateString("uk-UA");
+
+    if (name && text) {
+      const newComment = document.createElement("article");
+      newComment.classList.add("comment");
+
+      newComment.innerHTML = `
+        <h3>${name}</h3>
+        <p>${text}</p>
+        <small>${date}</small>
+      `;
+
+      commentList.prepend(newComment); // додати коментар у список
+      form.reset(); // очистити форму
+    }
+  });
+</script>
+
+
   <!-- Список відгуків -->
   <section id="comment-list" class="comment-list">
     <article class="comment">
