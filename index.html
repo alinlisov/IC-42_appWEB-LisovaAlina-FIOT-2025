@@ -869,37 +869,7 @@ placeholder="+380XXXXXXXXX" required>
   </div>
 </section>
 
-<script>
-  // показати / сховати форму
-  function toggleReviewForm() {
-    const wrapper = document.getElementById("reviewFormWrapper");
-    wrapper.style.display = (wrapper.style.display === "none" || wrapper.style.display === "") 
-      ? "block" 
-      : "none";
-  }
-  
-  form.addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const name = document.getElementById("comment-name").value.trim();
-    const text = document.getElementById("comment-text").value.trim();
-    const date = new Date().toLocaleDateString("uk-UA");
-
-    if (name && text) {
-      const newComment = document.createElement("article");
-      newComment.classList.add("comment");
-
-      newComment.innerHTML = `
-        <h3>${name}</h3>
-        <p>${text}</p>
-        <small>${date}</small>
-      `;
-
-      commentList.prepend(newComment); // додати коментар у список
-      form.reset(); // очистити форму
-    }
-  });
-</script>
+ 
 
 
   <!-- Список відгуків -->
